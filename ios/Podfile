@@ -44,6 +44,8 @@ target 'Bekelakar' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+
   target 'BekelakarTests' do
     inherit! :search_paths
     # Pods for testing
