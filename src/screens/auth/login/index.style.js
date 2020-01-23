@@ -4,6 +4,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  LoginText: {
+    fontFamily: 'AirbnbCerealBlack',
+  },
 });
 
 export default styles;
