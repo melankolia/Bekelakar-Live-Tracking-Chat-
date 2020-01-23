@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "830046566202",
+    "firebase_url": "https://bekelakar-df5d2.firebaseio.com",
+    "project_id": "bekelakar-df5d2",
+    "storage_bucket": "bekelakar-df5d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830046566202:android:468e02064e7d4e79c9c203",
+        "android_client_info": {
+          "package_name": "com.bekelakar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830046566202-tbt01n430otcqnrchoe7shg0a0d8prq1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bekelakar",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "830046566202-udr47q03hpq1jm3r17sfb78881vdurlb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUf1pq6Ns2vlxdQHbz9CThd0uuyyJ0Zkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830046566202-udr47q03hpq1jm3r17sfb78881vdurlb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
