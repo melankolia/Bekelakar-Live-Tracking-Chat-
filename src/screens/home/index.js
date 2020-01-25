@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 import styles from './index.style';
@@ -6,6 +7,7 @@ import {GoogleSignin, statusCodes} from 'react-native-google-signin';
 import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {Icon} from 'react-native-elements';
 
 class Home extends Component {
   state = {};
@@ -31,6 +33,9 @@ class Home extends Component {
     } else if (snapshot.val()) {
       await ref.update({
         status: 'Online',
+      });
+      this.setState({
+        photo: snapshot.child('photo').val(),
       });
       this.props.navigation.navigate('Home');
     }
@@ -67,7 +72,12 @@ class Home extends Component {
   };
   componentDidMount() {
     // this.checkAllAccount();
-    this.checkAccount();
+    const {navigation} = this.props;
+    //Adding an event listner om focus
+    //So whenever the screen will have focus it will set the state to zero
+    this.focusListener = navigation.addListener('didFocus', () => {
+      this.checkAccount();
+    });
   }
   componentWillUnmount() {
     // this.updateStatus();
@@ -79,18 +89,17 @@ class Home extends Component {
         <View style={map} />
         <View style={slider}>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Profile')}>
-            <Image
-              style={{
-                marginHorizontal: 5,
-                width: 50,
-                height: 50,
-                borderRadius: 40,
-                borderWidth: 2,
-                borderColor: 'white',
-              }}
-              source={{uri: auth().currentUser.photoURL}}
-            />
+            onPress={() => this.props.navigation.navigate('Profile')}
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'white',
+              width: 50,
+              height: 50,
+              borderRadius: 360,
+              marginHorizontal: 10,
+            }}>
+            <Icon name="user" type="font-awesome" size={20} color="gray" />
           </TouchableOpacity>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <Image
