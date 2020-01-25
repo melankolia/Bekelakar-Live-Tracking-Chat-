@@ -12,7 +12,9 @@ import {
 import styles from './index.style';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
+import storage from '@react-native-firebase/storage';
 import BackFlat from '../../components/backFlat/index';
+import ImagePicker from 'react-native-image-picker';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Icon, ButtonGroup} from 'react-native-elements';
 
@@ -49,6 +51,21 @@ class editProfile extends Component {
     const uid = auth().currentUser.uid;
     const ref = database().ref(`/users/${uid}`);
     try {
+      await storage()
+        .ref(`/friendsPhotos/${uid}`)
+        .putFile(this.state.photo)
+        .on(
+          'state_changed',
+          snapshot => {
+            console.log('SNAPSHOT', snapshot);
+          },
+          err => {
+            console.error(err);
+          },
+          uploadedFile => {
+            console.log('UPLOADED PHOTO', uploadedFile);
+          },
+        );
       await ref.update({
         uid,
         name: this.state.name,
@@ -81,6 +98,29 @@ class editProfile extends Component {
     this.setState({
       selectedIndex: selectedIndex,
       gender: gender[selectedIndex],
+    });
+  };
+  pickImage = () => {
+    const option = {
+      title: 'Pick an Image',
+      maxWidth: 800,
+      maxHeight: 600,
+    };
+    ImagePicker.showImagePicker(option, response => {
+      // console.log('Response = ', response);
+
+      if (response.error) {
+        console.log('Image error');
+      } else {
+        console.log('Image url: ' + response.uri);
+        const source = response.uri;
+        // You can also display the image using data:
+        // const source = {uri: 'data:image/jpeg;base64,' + response.data};
+        console.log(source);
+        this.setState({
+          photo: source,
+        });
+      }
     });
   };
 
@@ -117,17 +157,43 @@ class editProfile extends Component {
             {/* <View style={headerBottom}></View> */}
           </View>
           <View style={{backgroundColor: 'white'}}>
-            <ImageBackground
-              style={headerImage}
-              imageStyle={{
-                borderRadius: 360,
-                borderColor: 'white',
-                borderWidth: 3,
-              }}
-              source={{
-                uri: auth().currentUser.photoURL,
-              }}
-            />
+            <TouchableOpacity
+              style={{alignItems: 'center'}}
+              onPress={() => this.pickImage()}>
+              <ImageBackground
+                style={headerImage}
+                imageStyle={{
+                  borderRadius: 360,
+                  borderColor: 'white',
+                  borderWidth: 3,
+                }}
+                source={{
+                  uri:
+                    this.state.photo ||
+                    'https://firebasestorage.googleapis.com/v0/b/bekelakar-df5d2.appspot.com/o/default%2Fdefault.png?alt=media&token=f155e397-4106-4e8a-857b-34433cf7e771',
+                }}
+              />
+              <View
+                style={{
+                  width: 34,
+                  height: 34,
+                  borderColor: '#7AC5E0',
+                  borderWidth: 1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: 360,
+                  marginTop: -30,
+                  marginLeft: 70,
+                  backgroundColor: 'white',
+                }}>
+                <Icon
+                  name="edit"
+                  type="font-awesome"
+                  size={16}
+                  color="#7AC5E0"
+                />
+              </View>
+            </TouchableOpacity>
           </View>
           <View style={body}>
             <View style={containerInput}>

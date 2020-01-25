@@ -27,7 +27,12 @@ class Profile extends Component {
     console.log(this.state.age);
   };
   componentDidMount() {
-    this.getAccountData();
+    const {navigation} = this.props;
+    //Adding an event listner om focus
+    //So whenever the screen will have focus it will set the state to zero
+    this.focusListener = navigation.addListener('didFocus', () => {
+      this.getAccountData();
+    });
   }
   render() {
     const {
@@ -82,12 +87,14 @@ class Profile extends Component {
             <ImageBackground
               style={avatar}
               imageStyle={avatarRadius}
+              onProgress={() => this.pickImage()}
               source={{
                 uri:
                   this.state.photo ||
-                  'https://firebasestorage.googleapis.com/v0/b/bekelakar-df5d2.appspot.com/o/default%2Fdefault.png?alt=media&token=f1ef5bde-921a-4898-9566-5652311016af',
+                  'https://firebasestorage.googleapis.com/v0/b/bekelakar-df5d2.appspot.com/o/default%2Fdefault.png?alt=media&token=f155e397-4106-4e8a-857b-34433cf7e771',
               }}
             />
+
             <Text style={nameText}>{this.state.name || ' '}</Text>
             <Text style={locationText}>Yogyakarta, Indonesia</Text>
             <View style={contact}>
@@ -123,7 +130,8 @@ class Profile extends Component {
                 <Text style={labelContact}>Email</Text>
               </View>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('editProfile')}>
               <View style={chat}>
                 <Text
                   style={{
@@ -131,7 +139,7 @@ class Profile extends Component {
                     fontSize: 16,
                     fontFamily: 'AirbnbCerealMedium',
                   }}>
-                  Chat
+                  Edit Profile
                 </Text>
               </View>
             </TouchableOpacity>

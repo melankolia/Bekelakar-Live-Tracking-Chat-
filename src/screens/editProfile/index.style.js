@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
   headerBottom: {
     justifyContent: 'center',
     alignItems: 'center',
-    // borderColor: 'red',
-    // borderWidth: 1,
+    borderColor: 'red',
+    borderWidth: 1,
     marginTop: 10,
     height: 200,
   },
