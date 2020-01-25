@@ -58,7 +58,7 @@ class Login extends Component {
       const firebaseUserCredential = await firebase
         .auth()
         .signInWithCredential(credential);
-      console.warn(JSON.stringify(firebaseUserCredential.user.toJSON()));
+      // console.warn(JSON.stringify(firebaseUserCredential.user.toJSON()));
       this.props.navigation.navigate('Home');
     } catch (error) {
       console.log(error);
