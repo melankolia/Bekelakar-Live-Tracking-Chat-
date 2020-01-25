@@ -968,6 +968,26 @@
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
+"@react-native-firebase/auth@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-6.2.0.tgz#f31438c1b103052b1e70840b42d8bba785af603d"
+  integrity sha512-pU/Rt3p5DHoKBwPgFMs1+iAH6HQZXo+eYHcSyw9H36NFKYFpVMr75EoCyxQvzm3ZOUUmAO1yu/HWKXBHVFNqTg==
+
+"@react-native-firebase/database@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-6.2.0.tgz#02c96b6a22e32d5d982be39d44e3b5d4ada6ec5e"
+  integrity sha512-8+GMVeq4mLTkBh65n7hpUFUNTES95NEn3CSq2qOMapS1xH5hrxcBaUB5WkBDDyvHYgN5NRqeU5Zg/mo3ASPZJw==
+
+"@react-native-firebase/firestore@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-6.2.0.tgz#9060ccd9289c1cbd421dc6708066bfe3fd1a2e76"
+  integrity sha512-DRoJEcryYbvFt5lzgkxBkKmQKohxT766hl263fwspJdR5VrTF0LhTz4fYA3VcUAtFz8sho0qt4vRQktELCBe+A==
+
+"@react-native-firebase/storage@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-6.2.0.tgz#011e2f597794eadc55f3f3793e5cf11a72f62efb"
+  integrity sha512-N+dC2wR5SKo8y2Y9WpMGn52qqCWIzUaiaJ4ft0lRTv8cM+f72RjmEDW9h52fOd+4gBC4aV3WSe4RVACob72w7g==
+
 "@react-navigation/core@^3.5.1":
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.5.1.tgz#7a2339fca3496979305fb3a8ab88c2ca8d8c214d"
@@ -5199,6 +5219,16 @@ react-native-gesture-handler@^1.5.3:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-google-signin@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-2.1.1.tgz#4281940eee88602b0181dd49affdf8c92980c85c"
+  integrity sha512-6l3fiLdX/bfhh0BoxGq+jGkagFsO+mrE/eRV4+3/0k8+FDxO90vdPpQdDiwlM5vWXRxWthTzMM09/jHw+4cvNw==
+
+react-native-image-picker@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-2.2.0.tgz#12b5a29f5f21f4f7868e2a1e551b5528733f2d3e"
+  integrity sha512-G0wNa92J6ADLrAraLfhl+AoaLDP0FE4YpYlSh6sguLTCTUzNDi0xfpEvpxxZgZ6Wl0anuRrCkcWm7LmJNLHI2Q==
 
 react-native-iphone-x-helper@^1.2.1:
   version "1.2.1"
