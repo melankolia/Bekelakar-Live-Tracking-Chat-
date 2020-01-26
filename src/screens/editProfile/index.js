@@ -50,39 +50,67 @@ class editProfile extends Component {
   updateProfile = async () => {
     const uid = auth().currentUser.uid;
     const ref = database().ref(`/users/${uid}`);
+    let linkPhoto;
     try {
-      await storage()
-        .ref(`/friendsPhotos/${uid}`)
-        .putFile(this.state.photo)
-        .on(
-          'state_changed',
-          snapshot => {
-            console.log('SNAPSHOT', snapshot);
-          },
-          err => {
-            console.error(err);
-          },
-          uploadedFile => {
-            console.log('UPLOADED PHOTO', uploadedFile);
-          },
+      if (this.state.photo.search('https') === -1) {
+        await storage()
+          .ref(`/friendsPhotos/${uid}`)
+          .putFile(this.state.photo)
+          .on(
+            'state_changed',
+            snapshot => {
+              // linkPhoto = snapshot.metadata.fullPath;
+              console.log('SNAPSHOT ', snapshot);
+            },
+            err => {
+              console.error(err);
+            },
+            async uploadedFile => {
+              console.log('UPLOADED PHOTO', uploadedFile);
+              await storage()
+                .ref(`/friendsPhotos/${uid}`)
+                .getDownloadURL()
+                .then(url => (linkPhoto = url));
+              // .catch(err => (linkPhoto = auth().currentUser.photoURL));
+
+              await ref.update({
+                uid,
+                name: this.state.name,
+                email: this.state.email,
+                age: this.state.age,
+                photo: linkPhoto,
+                gender: this.state.gender || 'Male',
+                phone: this.state.phone,
+                longitude: this.state.longitude,
+                latitude: this.state.latitude,
+              });
+              ToastAndroid.showWithGravity(
+                'Save Successfull',
+                ToastAndroid.SHORT,
+                ToastAndroid.BOTTOM,
+              );
+              this.props.navigation.goBack();
+            },
+          );
+      } else {
+        await ref.update({
+          uid,
+          name: this.state.name,
+          email: this.state.email,
+          age: this.state.age,
+          photo: this.state.photo,
+          gender: this.state.gender || 'Male',
+          phone: this.state.phone,
+          longitude: this.state.longitude,
+          latitude: this.state.latitude,
+        });
+        ToastAndroid.showWithGravity(
+          'Save Successfull',
+          ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM,
         );
-      await ref.update({
-        uid,
-        name: this.state.name,
-        email: this.state.email,
-        age: this.state.age,
-        photo: this.state.photo,
-        gender: this.state.gender || 'Male',
-        phone: this.state.phone,
-        longitude: this.state.longitude,
-        latitude: this.state.latitude,
-      });
-      ToastAndroid.showWithGravity(
-        'Save Successfull',
-        ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM,
-      );
-      this.props.navigation.goBack();
+        this.props.navigation.goBack();
+      }
     } catch (error) {
       ToastAndroid.showWithGravity(
         error,
@@ -109,8 +137,22 @@ class editProfile extends Component {
     ImagePicker.showImagePicker(option, response => {
       // console.log('Response = ', response);
 
-      if (response.error) {
-        console.log('Image error');
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+        ToastAndroid.showWithGravity(
+          'Cancelled',
+          ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM,
+        );
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+        ToastAndroid.showWithGravity(
+          'Something went wrong',
+          ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM,
+        );
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
       } else {
         console.log('Image url: ' + response.uri);
         const source = response.uri;
@@ -120,6 +162,11 @@ class editProfile extends Component {
         this.setState({
           photo: source,
         });
+        ToastAndroid.showWithGravity(
+          'Image Set',
+          ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM,
+        );
       }
     });
   };

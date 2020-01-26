@@ -9,7 +9,7 @@ import styles from './index.style';
 class Profile extends Component {
   state = {};
   getAccountData = async () => {
-    const uid = auth().currentUser.uid;
+    const uid = this.props.navigation.getParam('uid');
     const ref = database().ref(`/users/${uid}`);
     let snapshot = await ref.once('value');
     this.setState({
@@ -131,7 +131,11 @@ class Profile extends Component {
               </View>
             </View>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('editProfile')}>
+              onPress={() => {
+                auth().currentUser.uid === this.props.navigation.getParam('uid')
+                  ? this.props.navigation.navigate('editProfile')
+                  : this.props.navigation.navigate('Home');
+              }}>
               <View style={chat}>
                 <Text
                   style={{
@@ -139,7 +143,10 @@ class Profile extends Component {
                     fontSize: 16,
                     fontFamily: 'AirbnbCerealMedium',
                   }}>
-                  Edit Profile
+                  {auth().currentUser.uid ===
+                  this.props.navigation.getParam('uid')
+                    ? 'Edit Profile'
+                    : 'Chat'}
                 </Text>
               </View>
             </TouchableOpacity>
