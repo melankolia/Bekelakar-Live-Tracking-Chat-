@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, ImageBackground} from 'react-native';
-import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
-import firebase from '@react-native-firebase/app';
+import database from '@react-native-firebase/database';
+import React, {Component} from 'react';
+import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
 import {Icon} from 'react-native-elements';
 import styles from './index.style';
 
@@ -21,6 +20,7 @@ class Profile extends Component {
       photo: snapshot.child('photo').val(),
       longitude: snapshot.child('longitude').val(),
       latitude: snapshot.child('latitude').val(),
+      status: snapshot.child('status').val(),
     });
   };
   testing = () => {
@@ -134,7 +134,19 @@ class Profile extends Component {
               onPress={() => {
                 auth().currentUser.uid === this.props.navigation.getParam('uid')
                   ? this.props.navigation.navigate('editProfile')
-                  : this.props.navigation.navigate('Home');
+                  : this.props.navigation.navigate('Chat', {
+                      item: {
+                        uid: auth().currentUser.uid,
+                        name: this.state.name,
+                        email: this.state.email,
+                        age: this.state.age,
+                        gender: this.state.gender,
+                        photo: this.state.photo,
+                        longitude: this.state.longitude,
+                        latitude: this.state.latitude,
+                        status: this.state.status,
+                      },
+                    });
               }}>
               <View style={chat}>
                 <Text
