@@ -184,7 +184,7 @@ class Home extends Component {
     }
   };
   componentWillUnmount() {
-    // this.updateStatus();
+    this.updateStatus();
     // console.log(this.state.userList[0].age);
   }
   render() {
@@ -297,7 +297,12 @@ class Home extends Component {
                     justifyContent: 'center',
                     borderRadius: 40,
                     alignItems: 'center',
-                  }}>
+                  }}
+                  onPress={() =>
+                    this.props.navigation.navigate('Chat', {
+                      item: this.state.item,
+                    })
+                  }>
                   <Text style={{color: 'white'}}>Chat</Text>
                 </TouchableOpacity>
               </View>
@@ -325,9 +330,32 @@ class Home extends Component {
               width: 60,
               height: 60,
               borderRadius: 360,
-              marginHorizontal: 10,
+              // marginHorizontal: 10,
             }}>
             <Icon name="user" type="font-awesome" size={20} color="gray" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              !this.state.loading
+                ? this.props.navigation.navigate('ChatList', {
+                    uid: auth().currentUser.uid,
+                  })
+                : ToastAndroid.show(
+                    'Users Data Still Loading',
+                    ToastAndroid.LONG,
+                  )
+            }
+            // onPress={() => this.iterator()}
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'white',
+              width: 60,
+              height: 60,
+              borderRadius: 360,
+              marginHorizontal: 10,
+            }}>
+            <Icon name="comments" type="font-awesome" size={20} color="gray" />
           </TouchableOpacity>
           <ScrollView
             style={{borderRadius: 360}}
