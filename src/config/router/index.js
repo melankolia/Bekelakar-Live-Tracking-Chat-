@@ -1,6 +1,13 @@
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import {Login, Home} from '../../screens/index';
+import {
+  Login,
+  Home,
+  Profile,
+  editProfile,
+  Chat,
+  ChatList,
+} from '../../screens/index';
 
 const StackAuth = createStackNavigator(
   {
@@ -15,6 +22,10 @@ const StackAuth = createStackNavigator(
 const Inside = createStackNavigator(
   {
     Home,
+    Profile,
+    editProfile,
+    ChatList,
+    Chat,
   },
   {
     initialRouteName: 'Home',
