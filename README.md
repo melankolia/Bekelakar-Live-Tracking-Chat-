@@ -1,6 +1,5 @@
-# Bekelakar-Live-Tracking-Chat-
-<h1 align="center">YoApp!</h1>
-<p align="center">
+<h1 align="left">Bekelakar!</h1>
+<p align="left">
     <img width="200" src="https://raw.githubusercontent.com/AdmiralYuuShi/YoApp/master/src/public/images/logo/yoapp_logo_rounded.png">
 </p>
 <p align="center">
@@ -18,7 +17,7 @@
 - [Contributors](#contributors)
 
 ## Introduction
-<b>YoApp!</b> is a chatting app where we can chat with friend by just add her email, we can manage our profile and see friend profile.
+<b>Bekelakar!</b> is a chatting app where we can chat with friend by just add her email, we can manage our profile and see friend profile.
 
 ## Features
 * User can register with email
