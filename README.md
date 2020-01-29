@@ -11,7 +11,6 @@
 - [Introduction](#introduction)
 - [Features](#features)
 - [Requirements](#requirements)
-- [Usage](#usage-for-development)
 - [Screenshots](#screenshots)
 - [Release APK](#release-apk)
 - [Contributors](#contributors)
@@ -35,11 +34,11 @@
 
 ## Screenshots
 <div align="center">
+    <img width="200" src="./Design/5.jpeg">
     <img width="200" src="./Design/4.jpeg">
     <img width="200" src="./Design/1.jpeg">
     <img width="200" src="./Design/2.jpeg">
     <img width="200" src="./Design/3.jpeg">
-    <img width="200" src="./Design/5.jpeg">
     <img width="200" src="./Design/6.jpeg">
 </div>
 
