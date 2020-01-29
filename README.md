@@ -20,10 +20,10 @@
 
 ## Features
 * User can Sign In with Google Account
-* User can manage theri profile
+* User can manage their profile
 * User can see another user profile
 * User can chat with other user
-* user can track other user location
+* User can track other user location
 
 ## Requirements
 * [`npm`](https://www.npmjs.com/get-npm)
