@@ -36,9 +36,9 @@
 <div align="center">
     <img width="200" src="./Design/5.jpeg">
     <img width="200" src="./Design/4.jpeg">
-    <img width="200" src="./Design/1.jpeg">
-    <img width="200" src="./Design/2.jpeg">
     <img width="200" src="./Design/3.jpeg">
+    <img width="200" src="./Design/2.jpeg">
+    <img width="200" src="./Design/1.jpeg">
     <img width="200" src="./Design/6.jpeg">
 </div>
 
