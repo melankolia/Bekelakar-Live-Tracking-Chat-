@@ -26,7 +26,7 @@
 * User can track other user location
 
 ## Requirements
-* [`npm`](https://www.npmjs.com/get-npm)
+* [`Yarn`](https://yarnpkg.com/)
 * [`react-native`](https://facebook.github.io/react-native/docs/getting-started)
 * [`react-native-cli`](https://facebook.github.io/react-native/docs/getting-started)
 * [`Bekelakar`](https://github.com/melankolia/Bekelakar-Live-Tracking-Chat-)
