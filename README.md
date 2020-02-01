@@ -16,7 +16,7 @@
 - [Contributors](#contributors)
 
 ## Introduction
-<b>Bekelakar!</b> is a chatting app where we can chat with friend by just add her email, we can manage our profile and see friend profile.
+<b>Bekelakar!</b> is a chatting app where we can chat with friend, we can manage our profile and see friend profile.
 
 ## Features
 * User can Sign In with Google Account
