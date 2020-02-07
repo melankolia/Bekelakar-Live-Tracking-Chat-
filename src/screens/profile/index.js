@@ -23,9 +23,6 @@ class Profile extends Component {
       status: snapshot.child('status').val(),
     });
   };
-  testing = () => {
-    console.log(this.state.age);
-  };
   componentDidMount() {
     const {navigation} = this.props;
     //Adding an event listner om focus
@@ -136,7 +133,7 @@ class Profile extends Component {
                   ? this.props.navigation.navigate('editProfile')
                   : this.props.navigation.navigate('Chat', {
                       item: {
-                        uid: auth().currentUser.uid,
+                        uid: this.props.navigation.getParam('uid'),
                         name: this.state.name,
                         email: this.state.email,
                         age: this.state.age,

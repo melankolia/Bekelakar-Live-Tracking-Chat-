@@ -33,7 +33,7 @@ class editProfile extends Component {
     const uid = auth().currentUser.uid;
     const ref = database().ref(`/users/${uid}`);
     const snapshot = await ref.once('value');
-    console.log('edit profile', snapshot.child('email').val());
+    // console.log('edit profile', snapshot.child('email').val());
     this.setState({
       uid,
       name: snapshot.child('name').val(),
@@ -60,13 +60,13 @@ class editProfile extends Component {
             'state_changed',
             snapshot => {
               // linkPhoto = snapshot.metadata.fullPath;
-              console.log('SNAPSHOT ', snapshot);
+              // console.log('SNAPSHOT ', snapshot);
             },
             err => {
               console.error(err);
             },
             async uploadedFile => {
-              console.log('UPLOADED PHOTO', uploadedFile);
+              // console.log('UPLOADED PHOTO', uploadedFile);
               await storage()
                 .ref(`/friendsPhotos/${uid}`)
                 .getDownloadURL()
@@ -138,7 +138,7 @@ class editProfile extends Component {
       // console.log('Response = ', response);
 
       if (response.didCancel) {
-        console.log('User cancelled image picker');
+        // console.log('User cancelled image picker');
         ToastAndroid.showWithGravity(
           'Cancelled',
           ToastAndroid.SHORT,
@@ -158,7 +158,7 @@ class editProfile extends Component {
         const source = response.uri;
         // You can also display the image using data:
         // const source = {uri: 'data:image/jpeg;base64,' + response.data};
-        console.log(source);
+        // console.log(source);
         this.setState({
           photo: source,
         });

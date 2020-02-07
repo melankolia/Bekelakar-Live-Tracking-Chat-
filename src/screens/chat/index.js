@@ -20,7 +20,7 @@ class Chat extends Component {
     status: '',
   };
   onSend = async () => {
-    console.log(this.props.navigation.getParam('item'));
+    // console.log(this.props.navigation.getParam('item'));
     if (this.state.message.length > 0) {
       let msgId = database()
         .ref('messages')
@@ -49,7 +49,7 @@ class Chat extends Component {
         .update(updates);
       this.setState({message: ''});
     }
-    console.log(this.state.messageList);
+    // console.log(this.state.messageList);
   };
   setMessage = () => {
     this.setState({
@@ -81,23 +81,23 @@ class Chat extends Component {
       longitude: snapshot.child('longitude').val(),
       latitude: snapshot.child('latitude').val(),
     });
-    console.log('sini bro');
+    // console.log('sini bro');
     ref = database()
       .ref('messages')
       // .child('messages')
       .child(`${uid}`)
       .child(`${this.state.item.uid}`);
     ref.on('child_added', val => {
-      console.log('didalam');
+      // console.log('didalam');
       this.setState(previousState => ({
         messageList: GiftedChat.append(previousState.messageList, val.val()),
       }));
     });
-    console.log('di bawah bro');
+    // console.log('di bawah bro');
   };
   componentDidMount = async () => {
     this.getAccountData();
-    console.log(this.state.messageList);
+    // console.log(this.state.messageList);
   };
   renderTime(props) {
     return (
@@ -115,7 +115,7 @@ class Chat extends Component {
     );
   }
   renderBubble(props) {
-    console.log(props);
+    // console.log(props);
     return (
       <Bubble
         {...props}

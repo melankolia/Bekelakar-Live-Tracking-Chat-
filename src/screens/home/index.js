@@ -73,7 +73,7 @@ class Home extends Component {
         });
       }
     });
-    console.log('Loading Done');
+    // console.log('Loading Done');
   };
   updateStatus = async () => {
     try {
@@ -135,7 +135,7 @@ class Home extends Component {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         });
-        console.log('Get Pos');
+        // console.log('Get Pos');
         // console.log('region : ', region);
         // console.log(
         //   'latitude : ',
@@ -168,7 +168,7 @@ class Home extends Component {
       await this.checkAccount();
       await this.checkPermissionLocation();
       await this.getPos();
-      console.log(this.state.loading);
+      // console.log(this.state.loading);
     });
   }
   // iterator = () => {
@@ -281,11 +281,12 @@ class Home extends Component {
                     justifyContent: 'center',
                     borderRadius: 40,
                   }}
-                  onPress={() =>
+                  onPress={() => {
+                    // console.log(this.state.item.uid);
                     this.props.navigation.navigate('Profile', {
                       uid: this.state.item.uid,
-                    })
-                  }>
+                    });
+                  }}>
                   <Text style={{color: 'white'}}>Profile</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
